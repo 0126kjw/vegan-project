@@ -12,7 +12,19 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+from sshtunnel import SSHTunnelForwarder
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+load_dotenv()
+ssh_tunnel = SSHTunnelForwarder(
+    ("144.24.70.5", 22),
+    # ssh_pkey="C:\django_stu\testsite\testsite\KEY_TEST.key",
+    ssh_username="ubuntu",
+    ssh_password=os.environ.get("PASSWORD"),
+    remote_bind_address=("10.0.1.163", 3306),
+)
+ssh_tunnel.start()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
