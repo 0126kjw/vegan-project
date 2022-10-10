@@ -37,7 +37,7 @@ SECRET_KEY = ''
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -115,11 +115,11 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'user_auth',
-        'USER': 'root',
-        'PASSWORD': 'wlsdn1004!',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'HOST': '127.0.0.1',
+        'PORT': ssh_tunnel.local_bind_port,
+        'NAME': "django_test",
+        'USER': "Team1",
+        'PASSWORD': os.environ.get("PASSWORD"),
     }
 }
 
